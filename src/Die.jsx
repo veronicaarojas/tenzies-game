@@ -1,8 +1,10 @@
 import React from 'react'
 
-function Die() {
+function Die({value}) {
   return (
-    <div>Die</div>
+    <div className='die'>
+      <div>{value}</div>
+      </div>
   )
 }
 
