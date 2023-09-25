@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import './App.css';
 import Die from './Die';
 
@@ -16,6 +16,14 @@ function App() {
     return diceArray;
   }
 
+  function rollDice() {
+    setDice(allNewDice());
+  }
+
+  
+
+  
+
   const diceBlock = dice.map((die, index) => 
     <Die key={index} value={die} />
   )
@@ -31,10 +39,13 @@ function App() {
       <h1 className='app--title'>Tenzies</h1>
       <p className='app--description'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className='dice--container'>
-
       {diceBlock}
-
       </div>
+      <button 
+      className='button'
+      onClick={rollDice}>
+        Roll
+      </button>
       
 
     </main>
