@@ -63,10 +63,10 @@ main {
 
 
 
-.button {
+button {
   margin-top: 17px;
   width: 92.16px;
-  height: 35.84px;
+  height: 40px;
   background-color: #5035FF;
   border-radius: 3.81px;
   border: none;
