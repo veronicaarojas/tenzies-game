@@ -29,6 +29,7 @@ main {
 
 .app--description {
   margin-top: 0px;
+  margin-bottom: 5px;
   max-width: 240px;
   text-align: center;
   font-family: 'Inter', sans-serif;
@@ -38,7 +39,7 @@ main {
 
 }
 .dice--container {
-  margin-top: 30px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: 40px 40px 40px 40px 40px;
   gap: 25px;

@@ -1,32 +1,49 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Die from './Die';
 import { nanoid } from 'nanoid';
+import Confetti from 'react-confetti/dist/types/Confetti';
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
+  const [tenzies, setTenzies] = useState(false);
+
+  useEffect(() => {
+   const allSame = dice.every(die => die.value === dice[0].value);
+   const allHeld = dice.every(die => die.isHeld === true);
+
+   if(allSame && allHeld) {
+    setTenzies(true);
+   }
+   
+  }, [dice]);
+
+  
+
+  function generateNewDie() {
+    return {
+      value: Math.ceil(Math.random() * 6),
+        isHeld: false,
+        id: nanoid()
+    }
+  }
 
   function allNewDice() {
     const diceArray = [];
     while(diceArray.length < 10) {
-      diceArray.push({
-        value: Math.ceil(Math.random() * 6),
-        isHeld: false,
-        id: nanoid()
-      });
+      diceArray.push(generateNewDie());
     }
     return diceArray;
   }
 
+  
+
   function rollDice() {
     setDice(oldDice => oldDice.map((die) => {
       return die.isHeld ?  
-      die :
-      {
-        value: Math.ceil(Math.random() * 6), 
-        isHeld: false,
-        id: nanoid()
-      }
+      die 
+      :
+      generateNewDie()
     }));
   }
 
