@@ -1,8 +1,9 @@
-import React from 'react'
+import {useState} from 'react'
 import './App.css';
 import Die from './Die';
 
 function App() {
+  const [dice, setDice] = useState(allNewDice());
 
   function allNewDice() {
     const diceArray = [];
@@ -14,6 +15,10 @@ function App() {
     }
     return diceArray;
   }
+
+  const diceBlock = dice.map((die, index) => 
+    <Die key={index} value={die} />
+  )
 
   
 
@@ -27,16 +32,7 @@ function App() {
       <p className='app--description'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className='dice--container'>
 
-      <Die value={1}/>
-      <Die value={1}/>
-      <Die value={1}/>
-      <Die value={1}/>
-      <Die value={1}/>
-      <Die value={1}/>
-      <Die value={1}/>
-      <Die value={1}/>
-      <Die value={1}/>
-      <Die value={1}/>
+      {diceBlock}
 
       </div>
       
